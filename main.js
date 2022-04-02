@@ -23,7 +23,22 @@ class Blockchain {
     createGenesisBlock() {
         return new Block(0, "02/04/2022", "Genesis Block", "0");
     }
+
+    getLatestBlock() {
+        return this.chain[this.chain.length - 1];
+    }
+
+    addNewBlock(newBlock) {
+        newBlock.previousHash = this.getLatestBlock().hash;
+        newBlock.hash = newBlock.calculateHash();
+        this.chain.push(newBlock);
+    }
 }
 
 let blockChain = new Blockchain();
-console.log("genesis block" + JSON.stringify(blockChain.chain[0], null, 4));
+
+blockChain.addNewBlock(new Block(1, "03/04/2022", {amount: 10}));
+blockChain.addNewBlock(new Block(2, "04/04/2022", {amount: 35}));
+blockChain.addNewBlock(new Block(3, "5/04/2022", {amount: 69}));
+
+console.log("genesis block" + JSON.stringify(blockChain.chain, null, 4));
