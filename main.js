@@ -1,0 +1,7 @@
+class Block {
+
+}
+
+class Blockchain {
+    
+}
