@@ -5,7 +5,7 @@ class Block {
         this.index = index;
         this.timestamp = timestamp;
         this.data = data;
-        this.nonce = 0;
+        this.nonce = 0;     // this is responsible for changing the hash in every iteraion during mining
         this.previousHash = previousHash;
         this.hash = this.calculateHash();
     }
@@ -25,7 +25,7 @@ class Block {
 
 class Blockchain {
     constructor() {
-        this.difficulty = 4;
+        this.difficulty = 4;    // manipulate this value to observe mining time
         this.chain = [this.createGenesisBlock()];
     }
 
